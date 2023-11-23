@@ -737,6 +737,32 @@ index 0fc90bd41b107..115ff2201ece6 100644
  	h3c,magic-nx30-pro)
  		addr=$(mtd_get_mac_ascii pdt_data_1 ethaddr)
  		[ "$PHYNBR" = "0" ] && macaddr_add $addr 2 > /sys${DEVPATH}/macaddress
+diff --git a/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh b/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh
+index 6155ddab72687..42156aefb4d66 100755
+--- a/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh
++++ b/target/linux/mediatek/filogic/base-files/lib/upgrade/platform.sh
+@@ -100,6 +100,11 @@
+ 		CI_UBIPART="ubi0"
+ 		nand_do_upgrade "$1"
+ 		;;
++	glinet,gl-mt6000)
++		CI_KERNPART="kernel"
++		CI_ROOTPART="rootfs"
++		emmc_do_upgrade "$1"
++		;;
+ 	h3c,magic-nx30-pro|\
+ 	mediatek,mt7981-rfb|\
+ 	qihoo,360t7|\
+@@ -161,6 +166,9 @@
+ 			;;
+ 		esac
+ 		;;
++	glinet,gl-mt6000)
++ 		emmc_copy_config
++ 		;;
+ 	esac
+ }
+ 
 diff --git a/target/linux/mediatek/image/filogic.mk b/target/linux/mediatek/image/filogic.mk
 index c9cf30b1cea1c..6082cf5f47ebd 100644
 --- a/target/linux/mediatek/image/filogic.mk

@@ -272,6 +272,18 @@ index 0000000000000..adb86d9ebd06f
 +		reg = <0xa002a 0x6>;
 +	};
 +};
+diff --git a/target/linux/mediatek/filogic/base-files/etc/board.d/02_network b/target/linux/mediatek/filogic/base-files/etc/board.d/02_network
+index aad1d67ff6fde..0760d17a8e276 100644
+--- a/target/linux/mediatek/filogic/base-files/etc/board.d/02_network
++++ b/target/linux/mediatek/filogic/base-files/etc/board.d/02_network
+@@ -44,6 +44,7 @@
+ 	mercusys,mr90x-v1)
+ 		ucidef_set_interfaces_lan_wan "lan0 lan1 lan2" eth1
+ 		;;
++	jcg,q30-pro|\
+ 	qihoo,360t7)
+ 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3" wan
+ 		;;
 diff --git a/target/linux/mediatek/filogic/base-files/etc/hotplug.d/ieee80211/11_fix_wifi_mac b/target/linux/mediatek/filogic/base-files/etc/hotplug.d/ieee80211/11_fix_wifi_mac
 index 395cc0f2dc546..a9de563a4bf09 100644
 --- a/target/linux/mediatek/filogic/base-files/etc/hotplug.d/ieee80211/11_fix_wifi_mac
